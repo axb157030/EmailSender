@@ -24,15 +24,17 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public String sendEmails() throws MessagingException {
-        String path = "C:\\Users\\amine\\OneDrive\\Documents\\Spring\\epic\\CourseCertificatesamine-benelbar-tableau-course.jpg";
+        String path = "";
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setTo("amine.benelbar.1@gmail.com");
+        helper.setTo("Some email");
         helper.setText("<html><body><p>Test!</p><body></html>", true);
         FileSystemResource file  = new FileSystemResource(new File(path));
         helper.addAttachment("testfile", file);
         helper.setSubject("EPICTestEmail");
         javaMailSender.send(message);
         return "success";
+        // https://stackoverflow.com/questions/24981052/send-mailmessage-to-send-different-attachments-to-different-recipients
+        // https://aws.amazon.com/secrets-manager/
     }
 }
