@@ -1,5 +1,6 @@
 package com.email.sender.service.impl;
 
+import com.email.sender.model.EmailConfig;
 import com.email.sender.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -23,7 +24,13 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
+    public String setEmailConfig(EmailConfig emailConfig) {
+        return null;
+    }
+
+    @Override
     public String sendEmails() throws MessagingException {
+        // Read .cvs file to find email and respective names
         String path = "";
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
